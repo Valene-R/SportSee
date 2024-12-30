@@ -1,0 +1,5 @@
+# Ignore unnecessary files and folders to reduce the Docker image size
+node_modules
+.git
+.vscode
+dist
