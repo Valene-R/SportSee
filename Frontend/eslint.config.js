@@ -31,9 +31,13 @@ export default [
       ...react.configs["jsx-runtime"].rules,
       ...reactHooks.configs.recommended.rules,
       "react/jsx-no-target-blank": "off",
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "tailwindcss/classnames-order": "off",
+      "no-unknown-utilities": [
+        "error",
+        {
+          ignoreAtRules: ["tailwind", "apply", "layer", "variants", "responsive", "screen"],
+        },
       ],
     },
   },
