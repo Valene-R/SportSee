@@ -1,9 +1,15 @@
-function App() {
+import Layout from "./components/Layout";
+
+/**
+ * Main application component
+ * @returns {JSX.Element} The application layout
+ */
+const App = () => {
   return (
-    <div className="mx-auto my-4 max-w-sm rounded-2xl border bg-zinc-100 p-4 shadow-xl">
-      <p>Projet</p>
+    <div>
+      <Layout>{/* <Router /> */}</Layout>
     </div>
   );
-}
+};
 
 export default App;
