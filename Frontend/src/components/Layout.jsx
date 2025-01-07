@@ -1,5 +1,6 @@
 import Header from "./header/Header";
 import PropTypes from "prop-types";
+import Sidebar from "./sidebar/Sidebar";
 
 /**
  * Structure the application
@@ -12,6 +13,7 @@ const Layout = ({ children }) => {
     <div className="flex min-h-screen min-w-[1024px] flex-col">
       <Header />
       <div className="flex flex-1">
+        <Sidebar />
         <main className="flex-1 bg-white p-6">{children}</main>
       </div>
     </div>
