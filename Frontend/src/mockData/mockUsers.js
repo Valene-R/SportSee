@@ -1,5 +1,5 @@
-export const mockUsers = {
-  12: {
+export const mockUsers = [
+  {
     data: {
       id: 12,
       userInfos: {
@@ -16,7 +16,7 @@ export const mockUsers = {
       },
     },
   },
-  18: {
+  {
     data: {
       id: 18,
       userInfos: {
@@ -33,4 +33,4 @@ export const mockUsers = {
       },
     },
   },
-};
+];

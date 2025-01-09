@@ -10,7 +10,8 @@ import { ROUTES } from "../router/routes";
 const Dashboard = () => {
   const { userId } = useParams(); // Extract user ID from the route parameters
   const navigate = useNavigate();
-  const userData = mockUsers[userId]?.data; // Access user data matching to the user ID
+  // Convert userId to number for comparison with mock data
+  const userData = mockUsers.find((user) => user.data.id === Number(userId))?.data;
 
   // Display an error message if user ID is invalid
   if (!userData) {
