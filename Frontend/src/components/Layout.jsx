@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       <Header />
       <div className="flex flex-1">
         <Sidebar />
-        <main className="flex-1 bg-white p-6">{children}</main>
+        <main className="mb-[86px] ml-[107px] mr-[90px] mt-[68px] flex-1 bg-white">{children}</main>
       </div>
     </div>
   );

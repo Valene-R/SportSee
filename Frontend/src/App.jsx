@@ -1,6 +1,7 @@
 import Layout from "./components/Layout";
 import { useState, useEffect } from "react";
 import Loader from "./components/Loader";
+import Dashboard from "./pages/Dashboard";
 
 /**
  * Main application component
@@ -20,7 +21,9 @@ const App = () => {
 
   return (
     <div>
-      <Layout>{/* <Router /> */}</Layout>
+      <Layout>
+        <Dashboard /> {/* Render Dashboard instead of Router */}
+      </Layout>
     </div>
   );
 };
