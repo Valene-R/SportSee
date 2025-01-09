@@ -1,21 +1,18 @@
-import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { mockUsers } from "../mockData/mockUsers";
 import clappingImage from "../assets/clapping-hands.png";
+import { ROUTES } from "../router/routes";
 
 /**
  * Display the user's dashboard with personal data
  * @returns {JSX.Element} The dashboard component
  */
 const Dashboard = () => {
-  const [currentUserId, setCurrentUserId] = useState("12"); // Default to user "12"
-  const userData = mockUsers[currentUserId]?.data; // Get the current user's data
+  const { userId } = useParams(); // Extract user ID from the route parameters
+  const navigate = useNavigate();
+  const userData = mockUsers[userId]?.data; // Access user data matching to the user ID
 
-  // Handle user switch
-  const handleSwitchUser = () => {
-    setCurrentUserId((prevUserId) => (prevUserId === "12" ? "18" : "12"));
-  };
-
-  // Handle invalid user ID
+  // Display an error message if user ID is invalid
   if (!userData) {
     return (
       <div className="flex h-screen items-center justify-center">
@@ -23,6 +20,12 @@ const Dashboard = () => {
       </div>
     );
   }
+
+  // Navigate to the other user's dashboard
+  const handleNavigate = () => {
+    const nextUserId = userId === "12" ? "18" : "12";
+    navigate(ROUTES.dashboard(nextUserId));
+  };
 
   return (
     <div className="m-l text-start">
@@ -32,11 +35,11 @@ const Dashboard = () => {
           <span className="text-red-600">{userData.userInfos.firstName}</span>
         </h1>
         <button
-          onClick={handleSwitchUser}
+          onClick={handleNavigate}
           className="h-9 rounded bg-gray-500 px-3 py-2 text-xs font-medium text-white shadow-md shadow-black hover:bg-red-600"
           aria-label="Changer d'utilisateur"
         >
-          Basculer vers {currentUserId === "12" ? "Cecilia" : "Karl"}
+          Basculer vers {userId === "12" ? "Cecilia" : "Karl"}
         </button>
       </div>
       <div className="mt-6 flex items-center">
