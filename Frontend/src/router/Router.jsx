@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ROUTES } from "./routes";
 import Dashboard from "../pages/Dashboard";
+import NotFound from "../pages/NotFound";
 
 /**
  * Define application routes
@@ -14,6 +15,9 @@ export default function Router() {
 
       {/* Main dashboard route */}
       <Route path={ROUTES.dashboard(":userId")} element={<Dashboard />} />
+
+      {/* 404 Route */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
