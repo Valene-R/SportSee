@@ -1,25 +1,43 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { mockUsers } from "../mockData/mockUsers";
+import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import clappingImage from "../assets/clapping-hands.png";
 import { ROUTES } from "../router/routes";
+import { fetchUserMock } from "../services/mockApiService";
+import Loader from "../components/Loader";
 
 /**
  * Display the user's dashboard with personal data
- * @returns {JSX.Element} The dashboard component
+ * @returns {JSX.Element} The user's dashboard
  */
 const Dashboard = () => {
   const { userId } = useParams(); // Extract user ID from the route parameters
   const navigate = useNavigate();
-  // Convert userId to number for comparison with mock data
-  const userData = mockUsers.find((user) => user.data.id === Number(userId))?.data;
+  const [userData, setUserData] = useState(null);
+  const [hasError, setHasError] = useState(false);
 
-  // Display an error message if user ID is invalid
-  if (!userData) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <p className="text-lg font-semibold text-red-500">Erreur: Utilisateur non trouvé</p>
-      </div>
-    );
+  useEffect(() => {
+    // Fetch user data when the component mounts
+    const fetchData = async () => {
+      try {
+        const user = await fetchUserMock(Number(userId)); // Fetch mock data
+        setUserData(user);
+      } catch (err) {
+        console.error(`API Error: ${err.message}`);
+        setHasError(true); // Trigger redirection on error
+      }
+    };
+
+    fetchData();
+  }, [userId]);
+
+  // Redirect to the NotFound page if userId is invalid
+  if (hasError) {
+    return <Navigate to="*" replace />;
+  }
+
+  // Display loader while waiting for data
+  if (!userData && !hasError) {
+    return <Loader />;
   }
 
   // Navigate to the other user's dashboard
@@ -33,7 +51,7 @@ const Dashboard = () => {
       <div className="flex items-center gap-5">
         <h1 className="flex text-5xl font-medium">
           <span className="mr-3 text-black">Bonjour</span>
-          <span className="text-red-600">{userData.userInfos.firstName}</span>
+          <span className="text-red-600">{userData.firstName}</span>
         </h1>
         <button
           onClick={handleNavigate}
