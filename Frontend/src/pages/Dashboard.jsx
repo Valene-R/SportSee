@@ -2,7 +2,7 @@ import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import clappingImage from "../assets/clapping-hands.png";
 import { ROUTES } from "../router/routes";
-import { fetchUserMock } from "../services/mockApiService";
+import { fetchUserData } from "../services/dataService";
 import Loader from "../components/Loader";
 
 /**
@@ -19,7 +19,7 @@ const Dashboard = () => {
     // Fetch user data when the component mounts
     const fetchData = async () => {
       try {
-        const user = await fetchUserMock(Number(userId)); // Fetch mock data
+        const user = await fetchUserData(Number(userId));
         setUserData(user);
       } catch (err) {
         console.error(`API Error: ${err.message}`);
