@@ -4,6 +4,11 @@ import clappingImage from "../assets/clapping-hands.png";
 import { ROUTES } from "../router/routes";
 import { fetchUserData } from "../services/dataService";
 import Loader from "../components/Loader";
+import CaloriesIcon from "../components/nutritionCard/CaloriesIcon";
+import ProteinsIcon from "../components/nutritionCard/ProteinsIcon";
+import CarbsIcon from "../components/nutritionCard/CarbsIcon";
+import FatsIcon from "../components/nutritionCard/FatsIcon";
+import KeyDataCard from "../components/nutritionCard/KeyDataCard";
 
 /**
  * Display the user's dashboard with personal data
@@ -65,6 +70,14 @@ const Dashboard = () => {
         <p className="text-black-700 items-center text-lg font-normal">Félicitations ! Vous avez explosé vos objectifs hier</p>
         <img src={clappingImage} alt="Applaudissements" className="ml-1 inline-block h-4 w-4" />
       </div>
+
+      {/* Key Data Section */}
+      <section className="mt-[77px] flex w-full flex-col items-end gap-9">
+        <KeyDataCard icon={<CaloriesIcon />} value={userData.getFormattedKeyData().calorieCount} label="Calories" bgColor="#FFD1D1" />
+        <KeyDataCard icon={<ProteinsIcon />} value={userData.getFormattedKeyData().proteinCount} label="Protéines" bgColor="#D1E8FF" />
+        <KeyDataCard icon={<CarbsIcon />} value={userData.getFormattedKeyData().carbohydrateCount} label="Glucides" bgColor="#FFF5CC" />
+        <KeyDataCard icon={<FatsIcon />} value={userData.getFormattedKeyData().lipidCount} label="Lipides" bgColor="#FFD6E1" />
+      </section>
     </div>
   );
 };
