@@ -24,7 +24,7 @@ export const mockUsers = [
         lastName: "Ratorez",
         age: 34,
       },
-      todayScore: 0.3,
+      score: 0.3,
       keyData: {
         calorieCount: 2500,
         proteinCount: 90,
