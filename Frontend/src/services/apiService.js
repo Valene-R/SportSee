@@ -2,6 +2,7 @@ import axios from "axios";
 import User from "../models/User";
 import UserActivity from "../models/UserActivity";
 import { BASE_URL } from "../config";
+import UserSessions from "../models/UserSessions";
 
 /**
  * Fetch user data from API
@@ -31,5 +32,20 @@ export const fetchUserActivity = async (userId) => {
     return new UserActivity(response.data.data); // Transform data using the UserActivity model
   } catch (error) {
     throw new Error("User activity data not found");
+  }
+};
+
+/**
+ * Fetch user session data from API
+ * @param {number} userId The user ID
+ * @returns {Promise<UserSessions>} Returns an instance of UserSessions
+ * @throws {Error} Throws an error if the user session data is not found
+ */
+export const fetchUserSessions = async (userId) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/${userId}/average-sessions`);
+    return new UserSessions(response.data.data); // Transform data using the UserSessions model
+  } catch (error) {
+    throw new Error("User session data not found");
   }
 };

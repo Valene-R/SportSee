@@ -2,6 +2,8 @@ import { mockUsers } from "../mockData/mockUsers";
 import User from "../models/User";
 import UserActivity from "../models/UserActivity";
 import { mockActivity } from "../mockData/mockActivity";
+import { mockAverageSessions } from "../mockData/mockAverageSessions";
+import UserSessions from "../models/UserSessions";
 
 /**
  * Simulate a call to fetch a user
@@ -36,6 +38,25 @@ export const fetchUserActivityMock = async (userId) => {
     return new UserActivity(userActivity.data);
   } catch (error) {
     console.error(`Error fetching mock user activity: ${error.message}`);
+    throw error;
+  }
+};
+
+/**
+ * Simulate a call to fetch user session data
+ * @param {number} userId The user ID
+ * @returns {Promise<UserSessions>} A formatted UserSessions instance
+ * @throws Will throw an error if the session data is not found
+ */
+export const fetchUserSessionsMock = async (userId) => {
+  try {
+    const userSessions = mockAverageSessions.find((session) => session.data.userId === userId);
+    if (!userSessions) {
+      throw new Error(`User session data not found for user ID: ${userId}`);
+    }
+    return new UserSessions(userSessions.data);
+  } catch (error) {
+    console.error(`Error fetching mock user sessions: ${error.message}`);
     throw error;
   }
 };

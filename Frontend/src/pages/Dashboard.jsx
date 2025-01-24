@@ -11,6 +11,8 @@ import FatsIcon from "../components/nutritionCard/FatsIcon";
 import KeyDataCard from "../components/nutritionCard/KeyDataCard";
 import { fetchUserActivityData } from "../services/dataService";
 import ActivityChart from "../components/charts/ActivityChart";
+import { fetchUserSessionsData } from "../services/dataService";
+import SessionsChart from "../components/charts/SessionsChart";
 
 /**
  * Display the user's dashboard with personal data
@@ -22,6 +24,7 @@ const Dashboard = () => {
   const [userData, setUserData] = useState(null);
   const [hasError, setHasError] = useState(false);
   const [activityData, setActivityData] = useState(null);
+  const [sessionData, setSessionData] = useState(null);
 
   useEffect(() => {
     // Fetch user data when the component mounts
@@ -29,8 +32,10 @@ const Dashboard = () => {
       try {
         const user = await fetchUserData(Number(userId));
         const activity = await fetchUserActivityData(Number(userId));
+        const sessions = await fetchUserSessionsData(Number(userId));
         setUserData(user);
         setActivityData(activity.sessions);
+        setSessionData(sessions.getFormattedSessions());
       } catch (err) {
         console.error(`API Error: ${err.message}`);
         setHasError(true); // Trigger redirection on error
@@ -46,7 +51,7 @@ const Dashboard = () => {
   }
 
   // Display loader while waiting for data
-  if ((!userData && !hasError) || !activityData) {
+  if ((!userData && !hasError) || !activityData || !sessionData) {
     return <Loader />;
   }
 
@@ -77,11 +82,15 @@ const Dashboard = () => {
       </div>
 
       <div className="flex justify-between">
-        {/* Activity Chart Section */}
-        <div className="mt-10">
-          <h2 className="invisible text-xl font-bold">Activité quotidienne</h2>
-          <ActivityChart data={activityData} />
-        </div>
+        <section className="flex flex-col gap-6">
+          {/* Charts Section */}
+          <div className="mt-10">
+            <h2 className="invisible text-xl font-bold">Activité quotidienne</h2>
+            <ActivityChart data={activityData} />
+            <SessionsChart data={sessionData} />
+          </div>
+        </section>
+
         {/* Key Data Section */}
         <section className="mt-[77px] flex w-full flex-col items-end gap-9">
           <KeyDataCard icon={<CaloriesIcon />} value={userData.getFormattedKeyData().calorieCount} label="Calories" bgColor="#FFD1D1" />

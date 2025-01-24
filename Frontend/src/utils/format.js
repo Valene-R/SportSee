@@ -21,3 +21,17 @@ export const formatDay = (dateString) => {
   }
   return parseInt(dateString.split("-").pop(), 10); // Extract and convert the day
 };
+
+/**
+ * Format session data by mapping days to letters
+ * @param {Array} sessions The raw session data from the API
+ * @returns {Array} The formatted session data
+ */
+export const formatSessions = (sessions) => {
+  const daysMap = ["L", "M", "M", "J", "V", "S", "D"];
+
+  return sessions.map((session) => ({
+    day: daysMap[session.day - 1], // Convert API day (1 => based day) to letter (0 => based array)
+    sessionLength: session.sessionLength || 0, // Default to 0 if null
+  }));
+};
