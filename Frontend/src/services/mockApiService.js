@@ -1,11 +1,13 @@
 import { mockUsers } from "../mockData/mockUsers";
 import User from "../models/User";
+import UserActivity from "../models/UserActivity";
+import { mockActivity } from "../mockData/mockActivity";
 
 /**
  * Simulate a call to fetch a user
  * @param {number} userId The ID of the user
- * @returns {Promise<object>} Simulated user data
- * @throws Will throw an error if the user is not found
+ * @returns {Promise<User>} A promise resolving to an instance of `User`
+ * @throws {Error} Will throw an error if the user is not found
  */
 export const fetchUserMock = async (userId) => {
   try {
@@ -16,5 +18,24 @@ export const fetchUserMock = async (userId) => {
     return new User(user.data); // Transform data using the User model
   } catch (error) {
     throw new Error(`Mock error: ${error.message}`);
+  }
+};
+
+/**
+ * Simulate a call to fetch user activity data
+ * @param {number} userId The user ID
+ * @returns {Promise<UserActivity>} A promise resolving to an instance of `UserActivity`
+ * @throws {Error} Will throw an error if the activity data is not found
+ */
+export const fetchUserActivityMock = async (userId) => {
+  try {
+    const userActivity = mockActivity.find((user) => user.data.userId === userId);
+    if (!userActivity) {
+      throw new Error(`User activity data not found for user ID: ${userId}`);
+    }
+    return new UserActivity(userActivity.data);
+  } catch (error) {
+    console.error(`Error fetching mock user activity: ${error.message}`);
+    throw error;
   }
 };

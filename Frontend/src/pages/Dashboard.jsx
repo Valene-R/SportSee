@@ -9,6 +9,8 @@ import ProteinsIcon from "../components/nutritionCard/ProteinsIcon";
 import CarbsIcon from "../components/nutritionCard/CarbsIcon";
 import FatsIcon from "../components/nutritionCard/FatsIcon";
 import KeyDataCard from "../components/nutritionCard/KeyDataCard";
+import { fetchUserActivityData } from "../services/dataService";
+import ActivityChart from "../components/charts/ActivityChart";
 
 /**
  * Display the user's dashboard with personal data
@@ -19,13 +21,16 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [hasError, setHasError] = useState(false);
+  const [activityData, setActivityData] = useState(null);
 
   useEffect(() => {
     // Fetch user data when the component mounts
     const fetchData = async () => {
       try {
         const user = await fetchUserData(Number(userId));
+        const activity = await fetchUserActivityData(Number(userId));
         setUserData(user);
+        setActivityData(activity.sessions);
       } catch (err) {
         console.error(`API Error: ${err.message}`);
         setHasError(true); // Trigger redirection on error
@@ -41,7 +46,7 @@ const Dashboard = () => {
   }
 
   // Display loader while waiting for data
-  if (!userData && !hasError) {
+  if ((!userData && !hasError) || !activityData) {
     return <Loader />;
   }
 
@@ -71,13 +76,20 @@ const Dashboard = () => {
         <img src={clappingImage} alt="Applaudissements" className="ml-1 inline-block h-4 w-4" />
       </div>
 
-      {/* Key Data Section */}
-      <section className="mt-[77px] flex w-full flex-col items-end gap-9">
-        <KeyDataCard icon={<CaloriesIcon />} value={userData.getFormattedKeyData().calorieCount} label="Calories" bgColor="#FFD1D1" />
-        <KeyDataCard icon={<ProteinsIcon />} value={userData.getFormattedKeyData().proteinCount} label="Protéines" bgColor="#D1E8FF" />
-        <KeyDataCard icon={<CarbsIcon />} value={userData.getFormattedKeyData().carbohydrateCount} label="Glucides" bgColor="#FFF5CC" />
-        <KeyDataCard icon={<FatsIcon />} value={userData.getFormattedKeyData().lipidCount} label="Lipides" bgColor="#FFD6E1" />
-      </section>
+      <div className="flex justify-between">
+        {/* Activity Chart Section */}
+        <div className="mt-10">
+          <h2 className="invisible text-xl font-bold">Activité quotidienne</h2>
+          <ActivityChart data={activityData} />
+        </div>
+        {/* Key Data Section */}
+        <section className="mt-[77px] flex w-full flex-col items-end gap-9">
+          <KeyDataCard icon={<CaloriesIcon />} value={userData.getFormattedKeyData().calorieCount} label="Calories" bgColor="#FFD1D1" />
+          <KeyDataCard icon={<ProteinsIcon />} value={userData.getFormattedKeyData().proteinCount} label="Protéines" bgColor="#D1E8FF" />
+          <KeyDataCard icon={<CarbsIcon />} value={userData.getFormattedKeyData().carbohydrateCount} label="Glucides" bgColor="#FFF5CC" />
+          <KeyDataCard icon={<FatsIcon />} value={userData.getFormattedKeyData().lipidCount} label="Lipides" bgColor="#FFD6E1" />
+        </section>
+      </div>
     </div>
   );
 };
