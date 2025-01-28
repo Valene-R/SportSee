@@ -34,19 +34,19 @@ CustomTooltip.propTypes = {
  */
 const ActivityChart = ({ data }) => {
   return (
-    <div className="bg-customLightGray h-[320px] w-[835px] rounded-lg p-4">
+    <div className="bg-customLightGray h-[320px] w-[835px] rounded-lg px-8 py-5">
       {/* Title + legends */}
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-lg font-medium text-black">Activité quotidienne</h2>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-8">
           {/* Weight legend */}
           <div className="flex items-center text-sm text-gray-500">
-            <span className="mr-2 inline-block h-3 w-3 rounded-full bg-gray-800"></span>
+            <span className="mr-3 inline-block h-2 w-2 rounded-full bg-gray-800"></span>
             Poids (kg)
           </div>
           {/* Calories burned legend */}
           <div className="flex items-center text-sm text-gray-500">
-            <span className="mr-2 inline-block h-3 w-3 rounded-full bg-red-600"></span>
+            <span className="mr-3 inline-block h-2 w-2 rounded-full bg-[#E60000]"></span>
             Calories brûlées (kCal)
           </div>
         </div>
@@ -54,17 +54,17 @@ const ActivityChart = ({ data }) => {
 
       {/* BarChart container */}
       <ResponsiveContainer width="100%" height={250}>
-        <BarChart data={data} barGap={8} barCategoryGap={40} margin={{ top: 20, right: -20, left: -40, bottom: 10 }}>
+        <BarChart data={data} barGap={8} barCategoryGap={30} margin={{ top: 20, right: 10, left: -45, bottom: 20 }}>
           {/* Grid with dashed lines */}
-          <CartesianGrid strokeDasharray="3 3" vertical={false} width={702} />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} width={744} height={145} />
 
           {/* X-axis displaying days */}
           <XAxis
             dataKey="day"
             tickLine={false}
-            axisLine={{ stroke: "#DEDEDE", strokeWidth: 1 }}
-            tick={{ fontSize: 14, fill: "#9B9EAC", dy: 10 }}
-            padding={{ left: 0, right: 0 }}
+            axisLine={{ stroke: "#DEDEDE", strokeWidth: 2 }}
+            tick={{ fontSize: 14, fill: "#9B9EAC", dy: 12 }}
+            padding={{ right: -45 }}
           />
 
           {/* Y-axis for weight (kg) positioned to the right */}
@@ -75,7 +75,7 @@ const ActivityChart = ({ data }) => {
             tickLine={false}
             tick={{ fontSize: 14, fill: "#9B9EAC" }}
             tickCount={3} // Ensure only three values displayed
-            dx={8}
+            dx={45}
           />
 
           {/* Y-axis for calories, hidden */}
