@@ -66,15 +66,14 @@ const Dashboard = () => {
       <div className="flex items-center gap-5">
         <h1 className="flex text-5xl font-medium">
           <span className="mr-3 text-black">Bonjour</span>
-          <span className="text-red-600">{userData.firstName}</span>
+          <span
+            className="cursor-pointer text-[#FF0000] transition-transform duration-300 hover:scale-110 hover:underline"
+            onClick={handleNavigate}
+            aria-label="Changer d'utilisateur"
+          >
+            {userData.firstName}
+          </span>
         </h1>
-        <button
-          onClick={handleNavigate}
-          className="h-9 rounded bg-gray-500 px-3 py-2 text-xs font-medium text-white shadow-md shadow-black hover:bg-red-600"
-          aria-label="Changer d'utilisateur"
-        >
-          Basculer vers {userId === "12" ? "Cecilia" : "Karl"}
-        </button>
       </div>
       <div className="mt-6 flex items-center">
         <p className="text-black-700 items-center text-lg font-normal">Félicitations ! Vous avez explosé vos objectifs hier</p>
