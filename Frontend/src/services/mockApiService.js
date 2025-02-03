@@ -4,6 +4,8 @@ import UserActivity from "../models/UserActivity";
 import { mockActivity } from "../mockData/mockActivity";
 import { mockAverageSessions } from "../mockData/mockAverageSessions";
 import UserSessions from "../models/UserSessions";
+import UserPerformance from "../models/UserPerformance";
+import { mockPerformance } from "../mockData/mockPerformance";
 
 /**
  * Simulate a call to fetch a user
@@ -57,6 +59,25 @@ export const fetchUserSessionsMock = async (userId) => {
     return new UserSessions(userSessions.data);
   } catch (error) {
     console.error(`Error fetching mock user sessions: ${error.message}`);
+    throw error;
+  }
+};
+
+/**
+ * Simulate a call to fetch user performance data
+ * @param {number} userId The user ID
+ * @returns {Promise<UserPerformance>} A promise resolving to an instance of `UserPerformance`
+ * @throws {Error} Will throw an error if the performance data is not found
+ */
+export const fetchUserPerformanceMock = async (userId) => {
+  try {
+    const userPerformance = mockPerformance.find((perf) => perf.data.userId === userId);
+    if (!userPerformance) {
+      throw new Error(`User performance data not found for user ID: ${userId}`);
+    }
+    return new UserPerformance(userPerformance.data);
+  } catch (error) {
+    console.error(`Error fetching mock user performance: ${error.message}`);
     throw error;
   }
 };

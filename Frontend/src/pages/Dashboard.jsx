@@ -13,6 +13,8 @@ import { fetchUserActivityData } from "../services/dataService";
 import ActivityChart from "../components/charts/ActivityChart";
 import { fetchUserSessionsData } from "../services/dataService";
 import SessionsChart from "../components/charts/SessionsChart";
+import { fetchUserPerformanceData } from "../services/dataService";
+import PerformanceChart from "../components/charts/PerformanceChart";
 
 /**
  * Display the user's dashboard with personal data
@@ -25,6 +27,7 @@ const Dashboard = () => {
   const [hasError, setHasError] = useState(false);
   const [activityData, setActivityData] = useState(null);
   const [sessionData, setSessionData] = useState(null);
+  const [performanceData, setPerformanceData] = useState(null);
 
   useEffect(() => {
     // Fetch user data when the component mounts
@@ -33,9 +36,12 @@ const Dashboard = () => {
         const user = await fetchUserData(Number(userId));
         const activity = await fetchUserActivityData(Number(userId));
         const sessions = await fetchUserSessionsData(Number(userId));
+        const performance = await fetchUserPerformanceData(Number(userId));
+
         setUserData(user);
         setActivityData(activity.sessions);
         setSessionData(sessions.getFormattedSessions());
+        setPerformanceData(performance.getFormattedPerformance());
       } catch (err) {
         console.error(`API Error: ${err.message}`);
         setHasError(true); // Trigger redirection on error
@@ -51,7 +57,7 @@ const Dashboard = () => {
   }
 
   // Display loader while waiting for data
-  if ((!userData && !hasError) || !activityData || !sessionData) {
+  if ((!userData && !hasError) || !activityData || !sessionData || !performanceData) {
     return <Loader />;
   }
 
@@ -62,7 +68,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="m-l text-start">
+    <div className="m-l flex flex-col text-start">
       <div className="flex items-center gap-5">
         <h1 className="flex text-5xl font-medium">
           <span className="mr-3 text-black">Bonjour</span>
@@ -84,14 +90,18 @@ const Dashboard = () => {
         <section className="flex flex-col gap-6">
           {/* Charts Section */}
           <div className="mt-10">
-            <h2 className="invisible text-xl font-bold">Activité quotidienne</h2>
-            <ActivityChart data={activityData} />
-            <SessionsChart data={sessionData} />
+            <div className="mt-[37px]">
+              <ActivityChart data={activityData} />
+            </div>
+            <div className="mt-8 flex flex-row gap-8">
+              <SessionsChart data={sessionData} />
+              <PerformanceChart data={performanceData} />
+            </div>
           </div>
         </section>
 
         {/* Key Data Section */}
-        <section className="mt-[77px] flex w-full flex-col items-end gap-9">
+        <section className="mt-[77px] flex w-full flex-col items-end gap-10">
           <KeyDataCard icon={<CaloriesIcon />} value={userData.getFormattedKeyData().calorieCount} label="Calories" bgColor="#FFD1D1" />
           <KeyDataCard icon={<ProteinsIcon />} value={userData.getFormattedKeyData().proteinCount} label="Protéines" bgColor="#D1E8FF" />
           <KeyDataCard icon={<CarbsIcon />} value={userData.getFormattedKeyData().carbohydrateCount} label="Glucides" bgColor="#FFF5CC" />

@@ -1,3 +1,5 @@
+import UserPerformance from "../models/UserPerformance";
+
 /**
  * Format a number to a localized string
  * @param {number|string} value The value to format
@@ -34,4 +36,23 @@ export const formatSessions = (sessions) => {
     day: daysMap[session.day - 1], // Convert API day (1 => based day) to letter (0 => based array)
     sessionLength: session.sessionLength || 0, // Default to 0 if null
   }));
+};
+
+/**
+ * Format performance data by mapping kind IDs to labels and ensuring valid values
+ * @param {Object} kind The mapping of kind IDs to performance types
+ * @param {Array} performanceData  The raw performance data array
+ * @returns {Array} The formatted and sorted performance data
+ */
+export const formatPerformance = (kind, performanceData) => {
+  // Define the order of performance kinds in French
+  const orderedKinds = ["Intensité", "Vitesse", "Force", "Endurance", "Énergie", "Cardio"];
+
+  const formattedData = performanceData.map((perf) => ({
+    value: perf.value, // Extract the performance value
+    kind: UserPerformance.kindTranslation[kind[perf.kind]] || kind[perf.kind], // French translation
+  }));
+
+  // Sort data according to the predefined order
+  return formattedData.sort((a, b) => orderedKinds.indexOf(a.kind) - orderedKinds.indexOf(b.kind));
 };
