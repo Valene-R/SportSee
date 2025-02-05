@@ -6,6 +6,7 @@ import { mockAverageSessions } from "../mockData/mockAverageSessions";
 import UserSessions from "../models/UserSessions";
 import UserPerformance from "../models/UserPerformance";
 import { mockPerformance } from "../mockData/mockPerformance";
+import UserScore from "../models/UserScore";
 
 /**
  * Simulate a call to fetch a user
@@ -78,6 +79,25 @@ export const fetchUserPerformanceMock = async (userId) => {
     return new UserPerformance(userPerformance.data);
   } catch (error) {
     console.error(`Error fetching mock user performance: ${error.message}`);
+    throw error;
+  }
+};
+
+/**
+ * Simulate a call to fetch user score data
+ * @param {number} userId The user ID
+ * @returns {Promise<UserScore>} A promise resolving to an instance of `UserScore`
+ * @throws {Error} Will throw an error if the user ID is not found in the mock data
+ */
+export const fetchUserScoreMock = async (userId) => {
+  try {
+    const user = mockUsers.find((user) => user.data.id === userId);
+    if (!user) {
+      throw new Error(`User score data not found for user ID: ${userId}`);
+    }
+    return new UserScore(user.data);
+  } catch (error) {
+    console.error(`Error fetching mock user score: ${error.message}`);
     throw error;
   }
 };

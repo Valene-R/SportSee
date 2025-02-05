@@ -1,5 +1,5 @@
-import { fetchUserMock, fetchUserActivityMock, fetchUserSessionsMock, fetchUserPerformanceMock } from "./mockApiService";
-import { fetchUser, fetchUserActivity, fetchUserSessions, fetchUserPerformance } from "./apiService";
+import { fetchUserMock, fetchUserActivityMock, fetchUserSessionsMock, fetchUserPerformanceMock, fetchUserScoreMock } from "./mockApiService";
+import { fetchUser, fetchUserActivity, fetchUserSessions, fetchUserPerformance, fetchUserScore } from "./apiService";
 
 /**
  * Determine whether to use mock data or real API
@@ -34,3 +34,10 @@ export const fetchUserSessionsData = isMock ? fetchUserSessionsMock : fetchUserS
  * @returns {Promise<UserPerformance>} A promise resolving to an instance of `UserPerformance`
  */
 export const fetchUserPerformanceData = isMock ? fetchUserPerformanceMock : fetchUserPerformance;
+
+/**
+ * Fetch user score data based on the selected data source (mock or real API)
+ * @param {number} userId The user ID for whom to fetch score data
+ * @returns {Promise<UserScore>} A promise resolving to an instance of `UserScore`
+ */
+export const fetchUserScoreData = isMock ? fetchUserScoreMock : fetchUserScore;

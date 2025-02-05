@@ -2,19 +2,17 @@ import { useParams, useNavigate, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import clappingImage from "../assets/clapping-hands.png";
 import { ROUTES } from "../router/routes";
-import { fetchUserData } from "../services/dataService";
+import { fetchUserData, fetchUserActivityData, fetchUserSessionsData, fetchUserPerformanceData, fetchUserScoreData } from "../services/dataService";
 import Loader from "../components/Loader";
 import CaloriesIcon from "../components/nutritionCard/CaloriesIcon";
 import ProteinsIcon from "../components/nutritionCard/ProteinsIcon";
 import CarbsIcon from "../components/nutritionCard/CarbsIcon";
 import FatsIcon from "../components/nutritionCard/FatsIcon";
 import KeyDataCard from "../components/nutritionCard/KeyDataCard";
-import { fetchUserActivityData } from "../services/dataService";
 import ActivityChart from "../components/charts/ActivityChart";
-import { fetchUserSessionsData } from "../services/dataService";
 import SessionsChart from "../components/charts/SessionsChart";
-import { fetchUserPerformanceData } from "../services/dataService";
 import PerformanceChart from "../components/charts/PerformanceChart";
+import ScoreChart from "../components/charts/ScoreChart";
 
 /**
  * Display the user's dashboard with personal data
@@ -23,11 +21,14 @@ import PerformanceChart from "../components/charts/PerformanceChart";
 const Dashboard = () => {
   const { userId } = useParams(); // Extract user ID from the route parameters
   const navigate = useNavigate();
+
+  // State variables for storing API data
   const [userData, setUserData] = useState(null);
-  const [hasError, setHasError] = useState(false);
   const [activityData, setActivityData] = useState(null);
   const [sessionData, setSessionData] = useState(null);
   const [performanceData, setPerformanceData] = useState(null);
+  const [scoreData, setScoreData] = useState(null);
+  const [hasError, setHasError] = useState(false); // Handle API errors
 
   useEffect(() => {
     // Fetch user data when the component mounts
@@ -37,11 +38,14 @@ const Dashboard = () => {
         const activity = await fetchUserActivityData(Number(userId));
         const sessions = await fetchUserSessionsData(Number(userId));
         const performance = await fetchUserPerformanceData(Number(userId));
+        const score = await fetchUserScoreData(Number(userId));
 
+        // Update state with fetched data
         setUserData(user);
         setActivityData(activity.sessions);
         setSessionData(sessions.getFormattedSessions());
         setPerformanceData(performance.getFormattedPerformance());
+        setScoreData(score.percentage);
       } catch (err) {
         console.error(`API Error: ${err.message}`);
         setHasError(true); // Trigger redirection on error
@@ -57,7 +61,7 @@ const Dashboard = () => {
   }
 
   // Display loader while waiting for data
-  if ((!userData && !hasError) || !activityData || !sessionData || !performanceData) {
+  if ((!userData && !hasError) || !activityData || !sessionData || !performanceData || !scoreData) {
     return <Loader />;
   }
 
@@ -87,16 +91,15 @@ const Dashboard = () => {
       </div>
 
       <div className="flex justify-between">
-        <section className="flex flex-col gap-6">
-          {/* Charts Section */}
-          <div className="mt-10">
-            <div className="mt-[37px]">
-              <ActivityChart data={activityData} />
-            </div>
-            <div className="mt-8 flex flex-row gap-8">
-              <SessionsChart data={sessionData} />
-              <PerformanceChart data={performanceData} />
-            </div>
+        {/* Charts Section */}
+        <section className="mt-10 flex flex-col gap-6">
+          <div className="mt-[37px]">
+            <ActivityChart data={activityData} />
+          </div>
+          <div className="mt-3 flex flex-row gap-8">
+            <SessionsChart data={sessionData} />
+            <PerformanceChart data={performanceData} />
+            <ScoreChart score={scoreData} />
           </div>
         </section>
 

@@ -4,6 +4,7 @@ import UserActivity from "../models/UserActivity";
 import { BASE_URL } from "../config";
 import UserSessions from "../models/UserSessions";
 import UserPerformance from "../models/UserPerformance";
+import UserScore from "../models/UserScore";
 
 /**
  * Fetch user data from API
@@ -63,5 +64,20 @@ export const fetchUserPerformance = async (userId) => {
     return new UserPerformance(response.data.data); // Transform data using the UserPerformance model
   } catch (error) {
     throw new Error("User performance data not found");
+  }
+};
+
+/**
+ * Fetch user score data from the API
+ * @param {number} userId The user ID
+ * @returns {Promise<UserScore>} Returns an instance of UserScore
+ * @throws {Error} Throws an error if the user score data is not found
+ */
+export const fetchUserScore = async (userId) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/${userId}`);
+    return new UserScore(response.data.data); // Transform data using the UserScore model
+  } catch (error) {
+    throw new Error("User score not found");
   }
 };
