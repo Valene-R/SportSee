@@ -73,7 +73,7 @@ const Dashboard = () => {
 
   return (
     <div className="m-l flex flex-col text-start">
-      <div className="flex items-center gap-5">
+      <div className="mx-auto flex items-center gap-5 xl:mx-0">
         <h1 className="flex text-5xl font-medium">
           <span className="mr-3 text-black">Bonjour</span>
           <span
@@ -85,18 +85,18 @@ const Dashboard = () => {
           </span>
         </h1>
       </div>
-      <div className="mt-6 flex items-center">
+      <div className="mx-auto mt-6 flex items-center xl:mx-0">
         <p className="text-black-700 items-center text-lg font-normal">Félicitations ! Vous avez explosé vos objectifs hier</p>
         <img src={clappingImage} alt="Applaudissements" className="ml-1 inline-block h-4 w-4" />
       </div>
 
-      <div className="flex justify-between">
+      <div className="mx-auto flex flex-col-reverse justify-between xl:mx-0 xl:flex-row">
         {/* Charts Section */}
-        <section className="mt-10 flex flex-col gap-6">
+        <section className="mx-auto mt-10 flex flex-col gap-6 xl:mx-0">
           <div className="mt-[37px]">
             <ActivityChart data={activityData} />
           </div>
-          <div className="mt-3 flex flex-row gap-8">
+          <div className="mt-3 flex w-full flex-row gap-8">
             <SessionsChart data={sessionData} />
             <PerformanceChart data={performanceData} />
             <ScoreChart score={scoreData} />
@@ -104,7 +104,7 @@ const Dashboard = () => {
         </section>
 
         {/* Key Data Section */}
-        <section className="mt-[77px] flex w-full flex-col items-end gap-10">
+        <section className="mt-[77px] flex w-full flex-row items-end gap-10 xl:flex-col">
           <KeyDataCard icon={<CaloriesIcon />} value={userData.getFormattedKeyData().calorieCount} label="Calories" bgColor="#FFD1D1" />
           <KeyDataCard icon={<ProteinsIcon />} value={userData.getFormattedKeyData().proteinCount} label="Protéines" bgColor="#D1E8FF" />
           <KeyDataCard icon={<CarbsIcon />} value={userData.getFormattedKeyData().carbohydrateCount} label="Glucides" bgColor="#FFF5CC" />

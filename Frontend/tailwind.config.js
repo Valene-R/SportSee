@@ -5,7 +5,7 @@ export default {
     extend: {
       screens: {
         lg: "1024px", // min-width
-        xl: "1240px", // min-width
+        xl: "1300px", // min-width
       },
       verticalAlign: {
         block: "unset", // Remove vertical-align for blocks

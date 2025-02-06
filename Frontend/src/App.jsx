@@ -20,11 +20,11 @@ const App = () => {
   if (loading) return <Loader />; // Show loader while loading
 
   return (
-    <div>
+    <>
       <Layout>
         <Router />
       </Layout>
-    </div>
+    </>
   );
 };
 

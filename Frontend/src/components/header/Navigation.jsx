@@ -14,7 +14,7 @@ const Navigation = () => {
 
   return (
     <nav className="h-6 w-full max-w-[994px]">
-      <ul className="flex size-6 flex-row justify-between space-x-8 text-lg font-medium sm:gap-10 lg:gap-36 xl:gap-44">
+      <ul className="flex size-6 flex-row text-lg font-medium sm:gap-28 lg:gap-32 xl:gap-52">
         {navLinks.map((link, index) => (
           <NavItem key={index} label={link.label} href={link.href} />
         ))}

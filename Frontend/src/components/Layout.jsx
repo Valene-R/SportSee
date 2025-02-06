@@ -12,9 +12,9 @@ const Layout = ({ children }) => {
   return (
     <div className="flex min-h-screen min-w-[1024px] flex-col">
       <Header />
-      <div className="flex flex-1">
+      <div className="flex">
         <Sidebar />
-        <main className="mb-[86px] ml-[107px] mr-[90px] mt-[68px] flex-1 bg-white">{children}</main>
+        <main className="mt-[68px] w-auto flex-1 bg-white xl:ml-[107px] xl:mr-[90px]">{children}</main>
       </div>
     </div>
   );

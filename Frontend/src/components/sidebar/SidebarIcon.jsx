@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
  */
 const SidebarIcon = ({ icon, altText, onClick }) => {
   return (
-    <button className="flex size-16 items-center justify-center rounded shadow hover:scale-110" onClick={onClick} aria-label={altText}>
+    <button className="flex size-16 w-full items-center justify-center rounded hover:scale-110" onClick={onClick} aria-label={altText}>
       <img src={icon} alt={altText} />
     </button>
   );
