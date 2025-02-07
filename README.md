@@ -1,6 +1,6 @@
-# SportSee [English Version](#en-version)
+# SportSee FR-Version/[EN-Version](#en-version)
 
-### FR Version
+### FR-Version
 
 ## Un tableau de bord d'analyse sportive
 
@@ -11,15 +11,15 @@ Ce projet inclut un **backend (micro-API)** et un **frontend** construit avec **
 
 Le projet utilise les technologies et outils suivants :
 
-**Docker Desktop** : Conteneurisation des environnements Backend et Frontend
-**React** : Bibliothèque JavaScript pour le Frontend
-**Vite** : Outil de développement rapide pour React
-**Tailwind CSS** : Framework CSS utilitaire pour un design efficace
-**ESLint** : Vérification de la qualité du code pour maintenir un code propre et sans erreur
-**Prettier** : Formatage automatique du code pour un code cohérent
-**Postman** : Test et documentation des API pour faciliter la visualisation des endpoints du Backend
-**Recharts** : Librairie de graphiques pour React
-**Axios** : Gestion des requêtes HTTP
+- **Docker Desktop** : Conteneurisation des environnements Backend et Frontend
+- **React** : Bibliothèque JavaScript pour le Frontend
+- **Vite** : Outil de développement rapide pour React
+- **Tailwind CSS** : Framework CSS utilitaire pour un design efficace
+- **ESLint** : Vérification de la qualité du code pour maintenir un code propre et sans erreur
+- **Prettier** : Formatage automatique du code pour un code cohérent
+- **Postman** : Test et documentation des API pour faciliter la visualisation des endpoints du Backend
+- **Recharts** : Librairie de graphiques pour React
+- **Axios** : Gestion des requêtes HTTP
 
 ## Endpoints Backend
 
@@ -28,16 +28,16 @@ Consultez les endpoints exposés par le backend dans le fichier **README du Back
 **Aperçu rapide des routes disponibles pour l’API** :
 
 **Récupérer les informations d'un utilisateur** :
-`GET /user/:userId` : `http://localhost:3000/user/12` `http://localhost:3000/user/18`
+`GET /user/:userId` : - `http://localhost:3000/user/12` `http://localhost:3000/user/18`
 
 **Récupérer les activités de l'utilisateur** :
-`GET /user/:userId/activity` : `http://localhost:3000/user/12/activity` `http://localhost:3000/user/18/activity`
+`GET /user/:userId/activity` : - `http://localhost:3000/user/12/activity` `http://localhost:3000/user/18/activity`
 
 **Récupérer les sessions moyennes** :
-`GET /user/:userId/average-sessions` : `http://localhost:3000/user/12/average-sessions` `http://localhost:3000/user/18/average-sessions`
+`GET /user/:userId/average-sessions` : - `http://localhost:3000/user/12/average-sessions` `http://localhost:3000/user/18/average-sessions`
 
 **Récupérer les performances de l'utilisateur** :
-`GET /user/:userId/performance` : `http://localhost:3000/user/12/performance` `http://localhost:3000/user/18/performance`
+`GET /user/:userId/performance` : - `http://localhost:3000/user/12/performance` `http://localhost:3000/user/18/performance`
 
 **Attention, actuellement seuls deux utilisateurs ont été moqués. Ils ont respectivement les identifiants utilisateur 12 et 18.**
 
@@ -45,8 +45,10 @@ Consultez les endpoints exposés par le backend dans le fichier **README du Back
 
 **Cloner ce dépôt** :
 
-`git clone https://github.com/Valene-R/SportSee.git`
-`cd <nom-du-repo>`
+```sh
+git clone https://github.com/Valene-R/SportSee.git
+cd < nom-du-repo >
+```
 
 ## Avec Docker Desktop (Recommandé)
 
@@ -64,8 +66,8 @@ Pour lancer le projet complet avec **Docker** :
 
 2. **Accéder à l'application** :
 
-Frontend : http://localhost:5173
-Backend : http://localhost:3000
+- Frontend : http://localhost:5173
+- Backend : http://localhost:3000
 
 4. **Les logs des services peuvent être consultés avec** :
    `docker-compose logs`
@@ -91,8 +93,10 @@ Puis relancez l'application avec :
 **Lancer l'application en production**
 Si vous devez exécuter l'application pour un **déploiement en production**, utilisez :
 
-`docker-compose down --rmi all --volumes`
-`docker-compose -f docker-compose.yml up --build`
+```sh
+docker-compose down --rmi all --volumes
+docker-compose -f docker-compose.yml up --build
+```
 
 ### Notes importantes
 
@@ -107,7 +111,8 @@ Si vous devez exécuter l'application pour un **déploiement en production**, ut
 - **NPM** installé
 
 **Lancer le projet manuellement** :
-`cd Backend` : se référer au fichier **README du Backend**
+
+- `cd Backend` : se référer au fichier **README du Backend**
 
 ```sh
 cd Frontend
@@ -115,7 +120,7 @@ npm install
 npm run dev
 ```
 
-### EN Version
+### EN-Version
 
 ## A sports analytics dashboard
 
@@ -126,15 +131,15 @@ This project includes a **backend (micro-API)** and a **frontend** built with **
 
 This project uses the following technologies and tools:
 
-**Docker Desktop** : Containerization of Backend and Frontend environments
-**React** : JavaScript library for the Frontend
-**Vite** : Fast development tool for React
-**Tailwind CSS** : Utility-first CSS framework for efficient design
-**ESLint** : Code quality verification to maintain clean and error-free code
-**Prettier** : Automatic code formatting for a consistent structure
-**Postman** : API testing and documentation to facilitate Backend visualization
-**Recharts** : Charting library for React
-**Axios** : HTTP request management
+- **Docker Desktop** : Containerization of Backend and Frontend environments
+- **React** : JavaScript library for the Frontend
+- **Vite** : Fast development tool for React
+- **Tailwind CSS** : Utility-first CSS framework for efficient design
+- **ESLint** : Code quality verification to maintain clean and error-free code
+- **Prettier** : Automatic code formatting for a consistent structure
+- **Postman** : API testing and documentation to facilitate Backend visualization
+- **Recharts** : Charting library for React
+- **Axios** : HTTP request management
 
 ## Endpoints Backend
 
@@ -143,16 +148,16 @@ Check out the backend-exposed endpoints in the file **README du Backend**.
 **Quick overview of available API routes** :
 
 **Retrieve user information including the user id, user information (first name, last name and age), the current day's score (todayScore) and key data (calorie, macronutrient, etc.)** :
-`GET /user/:userId` : `http://localhost:3000/user/12` `http://localhost:3000/user/18`
+`GET /user/:userId` : - `http://localhost:3000/user/12` `http://localhost:3000/user/18`
 
 **Retrieve a user's activity day by day with kilograms and calories** :
-`GET /user/:userId/activity` : `http://localhost:3000/user/12/activity` `http://localhost:3000/user/18/activity`
+`GET /user/:userId/activity` : - `http://localhost:3000/user/12/activity` `http://localhost:3000/user/18/activity`
 
 **Retrieve the average sessions of a user per day** :
-`GET /user/:userId/average-sessions` : `http://localhost:3000/user/12/average-sessions` `http://localhost:3000/user/18/average-sessions`
+`GET /user/:userId/average-sessions` : - `http://localhost:3000/user/12/average-sessions` `http://localhost:3000/user/18/average-sessions`
 
 **Retrieve a user's performance** :
-`GET /user/:userId/performance` : `http://localhost:3000/user/12/performance` `http://localhost:3000/user/18/performance`
+`GET /user/:userId/performance` : - `http://localhost:3000/user/12/performance` `http://localhost:3000/user/18/performance`
 
 **Warning, currently only two users have been mocked. They have userId 12 and 18 respectively.**
 
@@ -160,8 +165,10 @@ Check out the backend-exposed endpoints in the file **README du Backend**.
 
 **Clone this repository** :
 
-`git clone https://github.com/Valene-R/SportSee.git`
-`cd <nom-du-repo>`
+```sh
+git clone https://github.com/Valene-R/SportSee.git
+cd < nom-du-repo >
+```
 
 ## Using Docker Desktop (Recommended)
 
@@ -179,15 +186,14 @@ Start the complete project with **Docker** :
 
 2. **Access the application** :
 
-Frontend : http://localhost:5173
-Backend : http://localhost:3000
+- Frontend : http://localhost:5173
+- Backend : http://localhost:3000
 
 4. **The service logs can be viewed with** :
    `docker-compose logs`
 
 5. **Check that the containers are running** :
    `docker ps`
-
    If a list of active containers is displayed, everything works fine.
 
 ### Stop and Reset Docker
@@ -205,8 +211,10 @@ Then restart the application with :
 **Launch the application in production**
 If you need to run the application for **production deployment**, use :
 
-`docker-compose down --rmi all --volumes`
-`docker-compose -f docker-compose.yml up --build`
+```sh
+docker-compose down --rmi all --volumes
+docker-compose -f docker-compose.yml up --build
+```
 
 ### Important notes
 
