@@ -13,7 +13,6 @@ export default class User {
     this.firstName = data.userInfos.firstName;
     this.lastName = data.userInfos.lastName;
     this.age = data.userInfos.age;
-    this.todayScore = data.todayScore || data.score; // Handle alternate key "score"
     this.keyData = data.keyData; // Include keyData for health metrics
 
     // Extract keyData (0 if undefined)

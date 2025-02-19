@@ -5,7 +5,7 @@ import Router from "./router/Router";
 
 /**
  * Main application component
- * @returns {JSX.Element} The application layout
+ * @returns {JSX.Element} The application layout including the router
  */
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -20,11 +20,9 @@ const App = () => {
   if (loading) return <Loader />; // Show loader while loading
 
   return (
-    <>
-      <Layout>
-        <Router />
-      </Layout>
-    </>
+    <Layout>
+      <Router />
+    </Layout>
   );
 };
 
