@@ -12,9 +12,9 @@ import PropTypes from "prop-types";
  */
 const KeyDataCard = ({ icon, value, label, bgColor }) => {
   return (
-    <div className="bg-customLightGray flex h-[124px] max-w-[258px] items-center gap-6 rounded-[5px] p-6 xl:w-full">
+    <div className="flex h-[124px] w-full max-w-[258px] items-center gap-2 rounded-[5px] bg-customLightGray px-2 lg:px-4 xl:gap-6 xl:p-6 xl:px-8">
       {/* Icon container with background color */}
-      <div className={`flex h-[60px] w-[60px] items-center justify-center rounded-md`} style={{ backgroundColor: bgColor }}>
+      <div className="flex h-[60px] w-[60px] items-center justify-center rounded-md lg:mx-0" style={{ backgroundColor: bgColor }}>
         {icon}
       </div>
 

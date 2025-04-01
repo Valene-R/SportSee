@@ -33,7 +33,7 @@ const PerformanceChart = ({ data }) => {
   return (
     <div className="relative flex h-[263px] w-full max-w-[258px] rounded-lg bg-[#282D30]">
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart outerRadius="70%" data={data}>
+        <RadarChart outerRadius="65%" data={data}>
           {/* Hexagonal grid for visualization */}
           <PolarGrid radialLines={false} />
 

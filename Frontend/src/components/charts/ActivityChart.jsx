@@ -34,11 +34,11 @@ CustomTooltip.propTypes = {
  */
 const ActivityChart = ({ data }) => {
   return (
-    <div className="bg-customLightGray h-[320px] w-[835px] rounded-lg px-8 py-5">
+    <div className="h-[320px] w-full rounded-lg bg-customLightGray py-5 lg:min-w-[720px] lg:px-4 xl:w-[835px] xl:px-8">
       {/* Title + legends */}
       <div className="mb-4 flex items-center justify-between">
         <h2 className="text-lg font-medium text-black">Activité quotidienne</h2>
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-4 md:gap-6 lg:gap-8">
           {/* Weight legend */}
           <div className="flex items-center text-sm text-gray-500">
             <span className="mr-3 inline-block h-2 w-2 rounded-full bg-gray-800"></span>
@@ -54,9 +54,9 @@ const ActivityChart = ({ data }) => {
 
       {/* BarChart container */}
       <ResponsiveContainer width="100%" height={250}>
-        <BarChart data={data} barGap={8} barCategoryGap={30} margin={{ top: 20, right: 10, left: -45, bottom: 20 }}>
+        <BarChart data={data} barGap={8} barCategoryGap="10%" margin={{ top: 20, right: 10, left: -38, bottom: 20 }}>
           {/* Grid with dashed lines */}
-          <CartesianGrid strokeDasharray="3 3" vertical={false} width={744} height={145} />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} width="100%" height={145} />
 
           {/* X-axis displaying days */}
           <XAxis
@@ -75,7 +75,7 @@ const ActivityChart = ({ data }) => {
             tickLine={false}
             tick={{ fontSize: 14, fill: "#9B9EAC" }}
             tickCount={3} // Ensure only three values displayed
-            dx={45}
+            dx={40}
           />
 
           {/* Y-axis for calories, hidden */}

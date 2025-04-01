@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
  */
 const NavItem = ({ label, href }) => {
   return (
-    <li className="h-6 cursor-pointer hover:text-red-500 lg:text-base xl:text-xl">
+    <li className="h-4 cursor-pointer hover:text-red-500 lg:text-lg xl:text-xl">
       <a href={href}>{label}</a>
     </li>
   );

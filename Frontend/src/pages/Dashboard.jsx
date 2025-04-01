@@ -72,25 +72,27 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="m-l flex flex-col text-start">
-      <div className="mx-auto flex items-center gap-5 xl:mx-0">
-        <h1 className="flex text-5xl font-medium">
-          <span className="mr-3 text-black">Bonjour</span>
-          <span
-            className="cursor-pointer text-[#FF0000] transition-transform duration-300 hover:scale-110 hover:underline"
-            onClick={handleNavigate}
-            aria-label="Changer d'utilisateur"
-          >
-            {userData.firstName}
-          </span>
-        </h1>
-      </div>
-      <div className="mx-auto mt-6 flex items-center xl:mx-0">
-        <p className="text-black-700 items-center text-lg font-normal">Félicitations ! Vous avez explosé vos objectifs hier</p>
-        <img src={clappingImage} alt="Applaudissements" className="ml-1 inline-block h-4 w-4" />
+    <div className="flex flex-col text-start">
+      <div className="mx-auto flex flex-col self-start lg:ml-2">
+        <div className="mx-auto flex gap-5 lg:ml-2 xl:mx-0">
+          <h1 className="flex text-5xl font-medium">
+            <span className="mx-auto mr-3 text-black">Bonjour</span>
+            <span
+              className="cursor-pointer text-[#FF0000] transition-transform duration-300 hover:scale-110 hover:underline"
+              onClick={handleNavigate}
+              aria-label="Changer d'utilisateur"
+            >
+              {userData.firstName}
+            </span>
+          </h1>
+        </div>
+        <div className="mx-auto mt-6 flex items-center lg:ml-2 xl:mx-0">
+          <p className="text-black-700 items-center text-lg font-normal">Félicitations ! Vous avez explosé vos objectifs hier</p>
+          <img src={clappingImage} alt="Applaudissements" className="ml-1 inline-block h-4 w-4" />
+        </div>
       </div>
 
-      <div className="mx-auto flex flex-col-reverse justify-between xl:mx-0 xl:flex-row">
+      <div className="mx-auto flex justify-between md:flex-col-reverse lg:flex-row lg:gap-x-2 xl:gap-x-8">
         {/* Charts Section */}
         <section className="mx-auto mt-10 flex flex-col gap-6 xl:mx-0">
           <div className="mt-[37px]">
@@ -104,7 +106,7 @@ const Dashboard = () => {
         </section>
 
         {/* Key Data Section */}
-        <section className="mt-[77px] flex w-full flex-row items-end gap-10 xl:flex-col">
+        <section className="mt-[77px] flex w-full items-end gap-10 md:flex-row lg:flex-col">
           <KeyDataCard icon={<CaloriesIcon />} value={userData.getFormattedKeyData().calorieCount} label="Calories" bgColor="#FFD1D1" />
           <KeyDataCard icon={<ProteinsIcon />} value={userData.getFormattedKeyData().proteinCount} label="Protéines" bgColor="#D1E8FF" />
           <KeyDataCard icon={<CarbsIcon />} value={userData.getFormattedKeyData().carbohydrateCount} label="Glucides" bgColor="#FFF5CC" />
