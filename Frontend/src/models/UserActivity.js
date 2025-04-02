@@ -8,7 +8,10 @@ export default class UserActivity {
    * Create a UserActivity instance
    * @param {Object} data The raw data from the API
    * @param {number} data.userId The user's ID
-   * @param {Array} data.sessions The raw session data
+   * @param {Array<Object>} data.sessions Array of session objects
+   * @param {string} data.sessions[].day The date (formatted)
+   * @param {number} data.sessions[].kilogram The user's weight
+   * @param {number} data.sessions[].calories Calories burned
    */
   constructor(data) {
     this.userId = data.userId;

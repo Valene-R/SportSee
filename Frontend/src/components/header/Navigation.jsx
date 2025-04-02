@@ -1,7 +1,7 @@
 import NavItem from "./NavItem";
 
 /**
- * Create the main navigation bar
+ * Display the main navigation bar
  * @returns {JSX.Element} The navigation bar with multiple links
  */
 const Navigation = () => {

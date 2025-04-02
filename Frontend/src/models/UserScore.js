@@ -5,9 +5,9 @@ export default class UserScore {
   /**
    * Create an instance of UserScore
    * @param {Object} data The user data object
-   * @param {number} data.id The user ID
-   * @param {number} [data.todayScore] The score of the day
-   * @param {number} [data.score] The total score
+   * @param {number} data.id The user's ID
+   * @param {number} [data.todayScore] The user's score for the current day
+   * @param {number} [data.score] The user's total score (used if todayScore is unavailable)
    */
   constructor(data) {
     this.id = data.id;
@@ -20,7 +20,7 @@ export default class UserScore {
   }
 
   /**
-   * Get the score as a percentage
+   * Get the user's score as a percentage
    * @returns {number} Score percentage (between 0 and 100)
    */
   get percentage() {

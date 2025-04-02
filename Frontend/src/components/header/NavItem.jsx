@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 /**
- * Create a navigation item
+ * Display a navigation item
  * @param {Object} props Component properties
  * @param {string} props.label The text of the navigation item
  * @param {string} props.href The URL the navigation item points to

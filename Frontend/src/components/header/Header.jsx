@@ -2,7 +2,7 @@ import Logo from "./Logo";
 import Navigation from "./Navigation";
 
 /**
- * Create the header of the application
+ * Display the header of the application
  * @returns {JSX.Element} The application header with logo and Navigation
  */
 const Header = () => {

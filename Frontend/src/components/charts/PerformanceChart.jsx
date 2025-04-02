@@ -22,10 +22,19 @@ const CustomPerformanceTick = ({ payload, x, y, textAnchor }) => {
   );
 };
 
+CustomPerformanceTick.propTypes = {
+  payload: PropTypes.shape({
+    value: PropTypes.string.isRequired,
+  }).isRequired,
+  x: PropTypes.number.isRequired,
+  y: PropTypes.number.isRequired,
+  textAnchor: PropTypes.string.isRequired,
+};
+
 /**
  * Display the user's performance as a RadarChart
  * @param {Object[]} data The performance data to be displayed
- * @param {string} data[].kind The type of performance metric (e.g. "cardio", "strength")
+ * @param {string} data[].kind The type of performance metric (e.g. "Cardio", "Force")
  * @param {number} data[].value The corresponding value for the performance metric
  * @returns {JSX.Element} A responsive radar chart displaying user performance
  */
