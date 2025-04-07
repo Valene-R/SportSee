@@ -5,7 +5,7 @@ import { fetchUser, fetchUserActivity, fetchUserSessions, fetchUserPerformance, 
  * Determine whether to use mock data or real API
  * @constant {boolean}
  */
-const isMock = true; // Change to false to use real API
+const isMock = false; // Change to true to use mock data
 
 /**
  * Fetch user data based on the selected data source (mock or real API)
