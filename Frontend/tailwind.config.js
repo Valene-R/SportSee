@@ -6,6 +6,8 @@ export default {
       screens: {
         lg: "1024px", // min-width
         xl: "1300px", // min-width
+        "md-narrow": { raw: "(min-width: 1024px) and (max-width: 1072px)" },
+        "lg-narrow": { raw: "(min-width: 1300px) and (max-width: 1340px)" },
       },
       verticalAlign: {
         block: "unset", // Remove vertical-align for blocks

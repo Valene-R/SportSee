@@ -10,9 +10,9 @@ import dumbbellIcon from "../../assets/icon-dumbbell.png";
  */
 const Sidebar = () => {
   return (
-    <aside className="relative top-[-1px] flex min-h-[933px] w-full min-w-[110px] max-w-[117px] flex-col justify-center bg-black">
+    <aside className="relative top-[-1px] flex min-h-[933px] w-full min-w-[112px] max-w-[117px] flex-col justify-center bg-black">
       {/* Container for vertically aligned navigation icons */}
-      <div className="absolute top-64 flex flex-col items-center justify-center space-y-5 px-6">
+      <div className="absolute top-64 flex flex-col items-center justify-center space-y-5 px-[26.5px]">
         <SidebarIcon icon={yogaIcon} altText="Yoga Icon" />
         <SidebarIcon icon={swimIcon} altText="Swim Icon" />
         <SidebarIcon icon={bikeIcon} altText="Bike Icon" />

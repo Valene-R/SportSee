@@ -14,7 +14,7 @@ const KeyDataCard = ({ icon, value, label, bgColor }) => {
   return (
     <div className="flex h-[124px] w-full max-w-[258px] items-center gap-2 rounded-[5px] bg-customLightGray px-2 lg:px-4 xl:gap-6 xl:p-6 xl:px-8">
       {/* Icon container with background color */}
-      <div className="flex h-[60px] w-[60px] items-center justify-center rounded-md lg:mx-0" style={{ backgroundColor: bgColor }}>
+      <div className="md-narrow:h-12 md-narrow:w-12 flex size-[60px] items-center justify-center rounded-md lg:mx-0" style={{ backgroundColor: bgColor }}>
         {icon}
       </div>
 
