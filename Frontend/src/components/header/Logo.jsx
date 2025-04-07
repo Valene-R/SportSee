@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import logoSrc from "../../assets/logo-app.png";
 
@@ -11,9 +10,9 @@ import logoSrc from "../../assets/logo-app.png";
  */
 const Logo = ({ size = "w-44 h-16", altText = "SportSee Logo" }) => {
   return (
-    <Link to="/" className="flex items-center space-x-2">
+    <div className="flex items-center space-x-2">
       <img src={logoSrc} alt={altText} className={`${size} my-[18px] object-contain`} />
-    </Link>
+    </div>
   );
 };
 
