@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import logoSrc from "../../assets/logo-app.png";
 
 /**
- * Display the logo as a clickable link
+ * Display the logo of the application
  * @param {Object} props Component properties
  * @param {string} [props.size="w-44 h-16"] Tailwind CSS classes for size
  * @param {string} [props.altText="SportSee Logo"] Alternative text for the logo image
- * @returns {JSX.Element} The logo as a clickable link
+ * @returns {JSX.Element} The logo element
  */
 const Logo = ({ size = "w-44 h-16", altText = "SportSee Logo" }) => {
   return (
